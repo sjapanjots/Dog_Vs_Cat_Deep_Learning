@@ -1,0 +1,59 @@
+\documentclass[border=5pt, multi, tikz]{standalone}
+\usepackage{blocks}
+
+\begin{document}
+\begin{tikzpicture}
+  \def\ConvColor{rgb:yellow,5;red,2.5;white,5}
+  \def\ConvReluColor{rgb:yellow,5;red,5;white,5}
+  \def\PoolColor{rgb:blue,5;red,2.5;green,2.5;white,5}
+  \def\FcColor{rgb:blue,5;red,5;white,5}
+  \def\FcReluColor{rgb:blue,5;red,2.5;white,5}
+  \def\FcSoftmaxColor{rgb:magenta,5;red,2.5;blue,5;white,5}
+  \def\FcDropoutColor{rgb:blue,5;red,2.5;white,2.5;white,5}
+  \def\ConvSoftmaxColor{rgb:magenta,5;red,2.5;blue,5;white,2.5;white,5}
+
+  \tikzstyle{connection}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+  \tikzstyle{copyconnection}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,4;red,1;green,1;black,1},opacity=0.7]
+  \tikzstyle{copyconnectionN}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,1;red,4;green,1;black,1},opacity=0.7]
+  \tikzstyle{copyconnectionW}=[ultra thick,every node/.style={sloped,allow upside down},draw={rgb:blue,1;red,1;green,4;black,1},opacity=0.7]
+  \tikzstyle{connectionW}=[ultra thick,every node/.style={sloped,allow upside down},draw=\edgecolor,opacity=0.7]
+
+  \pic[shift={(0,0,0)}] at (0,0,0) {RightBandedBox={name=cr1,%
+        fill=\ConvColor,bandfill=\ConvReluColor,%
+        height=40,width={1,1,1.5},depth=40}};
+  \draw [connection]  (cr1-east)        -- node {\midarrow} ++(0.8,0,0);
+  \pic[shift={(0,0,0)}] at (cr1-east)    {Box={name=cr2,%
+        fill=\ConvColor,opacity=0.5,height=32,width={1,1,1},depth=32}};
+  \draw [connection]  (cr2-east)        -- node {\midarrow} ++(0.8,0,0);
+  \pic[shift={(0,0,0)}] at (cr2-east)    {Box={name=cr3,%
+        fill=\ConvColor,opacity=0.5,height=25,width={1,1,0.75},depth=25}};
+  \draw [connection]  (cr3-east)        -- node {\midarrow} ++(0.7,0,0);
+  \pic[shift={(0,0,0)}] at (cr3-east)    {Box={name=cr4,%
+        fill=\ConvColor,opacity=0.5,height=16,width={1,1,0.5},depth=16}};
+  \draw [connection]  (cr4-east)        -- node {\midarrow} ++(0.6,0,0);
+  \pic[shift={(0,0,0)}] at (cr4-east)    {Box={name=cr5,%
+        fill=\ConvColor,opacity=0.5,height=8,width={1,1,0.25},depth=8}};
+  \draw [connection]  (cr5-east)        -- node {\midarrow} ++(0.5,0,0);
+
+  \pic[shift={(0,0,0)}] at (cr5-east)    {Box={name=cr6,%
+        fill=\ConvColor,opacity=0.5,height=8,width={1,1,0.25},depth=8}};
+  \draw [connection]  (cr6-east)        -- node {\midarrow} ++(0.5,0,0);
+
+  \pic[shift={(0,0,0)}] at (cr6-east)    {Box={name=cr7,%
+        fill=\ConvColor,opacity=0.5,height=8,width={1,1,0.25},depth=8}};
+  \draw [connection]  (cr7-east)        -- node {\midarrow} ++(0.5,0,0);
+
+  \pic[shift={(0,0,0)}] at (cr7-east)    {Box={name=cr8,%
+        fill=\ConvColor,opacity=0.5,height=8,width={1,1,0.25},depth=8}};
+  \draw [connection]  (cr8-east)        -- node {\midarrow} ++(0.5,0,0);
+
+  \pic[shift={(0,0,0)}] at (cr8-east)    {Box={name=cr9,%
+        fill=\ConvColor,opacity=0.5,height=8,width={1,1,0.25},depth=8}};
+  \draw [connection]  (cr9-east)        -- node {\midarrow} ++(0.5,0,0);
+
+  \pic[shift={(0,0,0)}] at (cr9-east)    {Box={name=cr10,%
+        fill=\ConvColor,opacity=0.5,height=8,width={1,1,0.25},depth=8}};
+  \draw [connection]  (cr10-east)        -- node {\midarrow} ++(0.5,0,0);
+
+  \pic[shift={(0,0,0)}] at (cr10-east)    {Box={name=cr11,%
+        fill=\ConvColor,opacity=
